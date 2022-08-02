@@ -12,4 +12,9 @@ final class SampleFrameworkTests: XCTestCase {
         let color = SampleFramework.colorFromHexString("006736")
         XCTAssertEqual(color, SampleFramework.sampleColor)
     }
+    
+    func testSecondaryColorAreEqual(){
+        let color = SampleFramework.colorFromHexString("FCFFFD")
+        XCTAssertEqual(color, SampleFramework.secondaryColor)
+    }
 }

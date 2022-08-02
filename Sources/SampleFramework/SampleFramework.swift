@@ -27,4 +27,9 @@ public class SampleFramework {
    public static var sampleColor: UIColor {
         return colorFromHexString("006736")
     }
+    
+    /// The second best color
+    public static var secondaryColor: UIColor {
+         return colorFromHexString("FCFFFD")
+     }
 }
