@@ -7,4 +7,9 @@ final class SampleFrameworkTests: XCTestCase {
         let color = SampleFramework.colorFromHexString("FF0000")
         XCTAssertEqual(color, .red)
     }
+    
+    func testColorAreEqual(){
+        let color = SampleFramework.colorFromHexString("006736")
+        XCTAssertEqual(color, SampleFramework.sampleColor)
+    }
 }
