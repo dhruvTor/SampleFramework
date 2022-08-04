@@ -1,5 +1,5 @@
 //
-//  SampleFramework.swift
+//  Networking.swift
 //  SampleFramework
 //
 //  Created by Dhruv Jaiswal on 05/08/22.
@@ -7,6 +7,7 @@
 
 import Foundation
 
-public struct SampleFramework{
-    
+extension SampleFramework {
+    public class Networking{
+    }
 }
