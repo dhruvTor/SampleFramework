@@ -7,6 +7,21 @@
 
 import Foundation
 
+protocol NetworkSession{
+
+    func get(from url:URL,completionHandler:@escaping (Data?,Error?) -> Void)
+}
+
+extension URLSession:NetworkSession{
+    func get(from url: URL, completionHandler: @escaping (Data?, Error?) -> Void) {
+        dataTask(with: url) { data, response, error in
+            completionHandler(data, error)
+        }.resume()
+    }
+    
+    
+}
+
 extension SampleFramework {
     public class Networking{
         
@@ -15,14 +30,18 @@ extension SampleFramework {
         public class Manager{
             public init(){}
             
-            private var session = URLSession.shared
+            internal var session:NetworkSession = URLSession.shared
             
+            /// <#Description#>
+            /// - Parameters:
+            ///   - url: url to fetch data from
+            ///   - completionHandler: returns data and error
+            ///   Warning
             public func loadData(from url:URL,completionHandler:@escaping (NetworkResult<Data>) -> Void){
-               let task = session.dataTask(with: url) { data, response, error in
+               session.get(from: url) { data, error in
                    let result = data.map(NetworkResult<Data>.success) ?? .failure(error)
                    completionHandler(result)
                 }
-                task.resume()
             }
         }
     }
@@ -32,3 +51,6 @@ extension SampleFramework {
         case failure(Error?)
     }
 }
+
+
+
